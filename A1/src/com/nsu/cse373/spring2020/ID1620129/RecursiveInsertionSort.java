@@ -5,10 +5,12 @@ public class RecursiveInsertionSort {
     System.out.println("Executing Recursive Insertion Sort for the following input:");
     SortHelper.print(inputArray,inputArray.length);
     System.out.println("------------------------");
-    /*
-      Call your internal sorting method here
-      sortInternal(inputArray, inputArray.length);
-    */
+    
+    sortInternal(inputArray,inputArray.length);
+    
+    System.out.println("This is recursiveInsertion\n");
+    SortHelper.print(inputArray, inputArray.length);
+    
     System.out.println("------------------------");
   }
   
@@ -20,5 +22,22 @@ public class RecursiveInsertionSort {
   private static <E extends Comparable<E>> void sortInternal(E[] inputArray
       , int size){
     //
+
+		if(size<=1)
+			return;
+		sortInternal(inputArray, size-1);
+		E swap=inputArray[size-1];
+		int i;
+		for(i=size-2; i>=0 && inputArray[i].compareTo(swap)>0;i--){
+			inputArray[i+1]=inputArray[i];
+	}	
+		inputArray[i+1]=swap;
+	  
+	  
+		  SortHelper.print(inputArray,size);
+	  
+	  
+	  
+	  
   }
 }

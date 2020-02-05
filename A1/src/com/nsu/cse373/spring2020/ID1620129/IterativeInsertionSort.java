@@ -9,7 +9,9 @@ public class IterativeInsertionSort {
       Call your internal sorting method here
       sortInternal(inputArray, inputArray.length);
     */
+    System.out.println("This is iterativeInsertion\n");
     sortInternal(inputArray,inputArray.length);
+    SortHelper.print(inputArray, inputArray.length);
     System.out.println("------------------------");
   }
   
@@ -36,15 +38,14 @@ public class IterativeInsertionSort {
 					
 				}
 			}
-		}
-		
-        for(int k=0;k<size;k++) {
-        System.out.print(inputArray[k]+" ");
-        }
+			
+//		
+			  SortHelper.print(inputArray,size);
   
   
+  }
   
-  
+
   }
   
 }

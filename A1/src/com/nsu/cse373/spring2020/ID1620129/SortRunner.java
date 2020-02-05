@@ -3,12 +3,12 @@ package com.nsu.cse373.spring2020.ID1620129;
 public class SortRunner {
   
   public static void main(String[] args){
-  //  bubbleSortTester();
-   // recursiveInsertionSortTester();
-    iterativeInsertionSortTester();
-   // recursiveSelectionSortTester();
-  //  iterativeSelectionSortTester();
- //   mergeSortTester();
+   //  bubbleSortTester();
+     recursiveInsertionSortTester();
+     iterativeInsertionSortTester();
+     recursiveSelectionSortTester();
+     iterativeSelectionSortTester();
+     mergeSortTester();
   }
   
   private static void bubbleSortTester(){

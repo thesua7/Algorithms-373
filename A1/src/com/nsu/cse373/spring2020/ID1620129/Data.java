@@ -1,8 +1,13 @@
 package com.nsu.cse373.spring2020.ID1620129;
 
+import java.util.Arrays;
+
 public class Data implements Comparable<Data> {
   private int index = 0;
   private String text = null;
+  
+
+  
   
   public Data(int index, String text){
     this.index = index;
@@ -45,6 +50,7 @@ public class Data implements Comparable<Data> {
     else if(this.index < o.index)
       return -1;
     else
-      return 0;
+      return this.text.compareTo(o.text);
   }
+
 }

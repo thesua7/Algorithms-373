@@ -5,10 +5,10 @@ public class IterativeSelectionSort {
     System.out.println("Executing Iterative Selection Sort for the following input:");
     SortHelper.print(inputArray,inputArray.length);
     System.out.println("------------------------");
-    /*
-      Call your internal sorting method here
-      sortInternal(inputArray, inputArray.length);
-    */
+
+    System.out.println("This is IterativeSelection\n");
+    sortInternal(inputArray,inputArray.length);
+    SortHelper.print(inputArray, inputArray.length);
     System.out.println("------------------------");
   }
   
@@ -20,5 +20,28 @@ public class IterativeSelectionSort {
   private static <E extends Comparable<E>> void sortInternal(E[] inputArray
       , int size){
     //
+	  
+	  
+
+	  int max=0;
+	  
+	  for(int i=0;i<size-1;i++) {
+		  max=i;
+		  for(int j=i+1;j<size;j++) {
+			  if(inputArray[j].compareTo(inputArray[max])<0) {
+				  max = j;
+			  }
+		  }
+		  E temp = inputArray[i];
+		  inputArray[i] = inputArray[max];
+		  inputArray[max] = temp;
+		  
+		  SortHelper.print(inputArray,size);
+		  
+	  }
+	  
+	  
+	  
+	  
   }
 }

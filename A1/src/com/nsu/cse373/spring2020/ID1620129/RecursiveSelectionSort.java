@@ -5,10 +5,11 @@ public class RecursiveSelectionSort {
     System.out.println("Executing Recursive Selection Sort for the following input:");
     SortHelper.print(inputArray,inputArray.length);
     System.out.println("------------------------");
-    /*
-      Call your internal sorting method here
-      sortInternal(inputArray, inputArray.length);
-    */
+    
+    System.out.println("This is RecursiveSelection\n");
+    sortInternal(inputArray,inputArray.length);
+    SortHelper.print(inputArray, inputArray.length);
+    System.out.println("------------------------");
     System.out.println("------------------------");
   }
   
@@ -19,6 +20,60 @@ public class RecursiveSelectionSort {
    */
   private static <E extends Comparable<E>> void sortInternal(E[] inputArray
       , int size){
+	  
+	  
+	  
+	  
+	  RecursiveSelectionSort(inputArray,0,size);
+	  
+	  
+	  
+	  
+	  
     //
   }
+  
+  
+  public static <E extends Comparable<E>> void RecursiveSelectionSort(E[] inputArray,int i,int size) {
+	  
+	  
+	  
+	  int max = i;
+		
+		for(int j=i+1;j<size;j++) {
+			if(inputArray[max].compareTo(inputArray[j])>0) {
+				max = j;
+			}
+		}
+		
+		E temp = inputArray[i];
+		inputArray[i] = inputArray[max];
+		inputArray[max] = temp;
+		
+		  SortHelper.print(inputArray,size);
+		    
+		   if(i+1<size) {
+			   RecursiveSelectionSort(inputArray,i+1,size);
+		   }
+		
+	  
+	  
+	  
+	  
+	  
+	  
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 }
