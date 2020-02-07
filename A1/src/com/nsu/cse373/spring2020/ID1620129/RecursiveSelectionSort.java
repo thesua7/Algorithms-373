@@ -20,16 +20,9 @@ public class RecursiveSelectionSort {
    */
   private static <E extends Comparable<E>> void sortInternal(E[] inputArray
       , int size){
-	  
-	  
-	  
-	  
+ 
 	  RecursiveSelectionSort(inputArray,0,size);
-	  
-	  
-	  
-	  
-	  
+
     //
   }
   
@@ -55,13 +48,6 @@ public class RecursiveSelectionSort {
 		   if(i+1<size) {
 			   RecursiveSelectionSort(inputArray,i+1,size);
 		   }
-		
-	  
-	  
-	  
-	  
-	  
-	  
   }
   
   

@@ -22,9 +22,7 @@ public class IterativeInsertionSort {
    */
   private static <E extends Comparable<E>> void sortInternal(E[] inputArray
       , int size){
-	  
-	  
-		
+	
 		int i,j=2;
 		E swap;
 	
@@ -39,7 +37,7 @@ public class IterativeInsertionSort {
 				}
 			}
 			
-//		
+		
 			  SortHelper.print(inputArray,size);
   
   

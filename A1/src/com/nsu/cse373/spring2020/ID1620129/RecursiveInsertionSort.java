@@ -6,9 +6,10 @@ public class RecursiveInsertionSort {
     SortHelper.print(inputArray,inputArray.length);
     System.out.println("------------------------");
     
-    sortInternal(inputArray,inputArray.length);
+    
     
     System.out.println("This is recursiveInsertion\n");
+    sortInternal(inputArray,inputArray.length);
     SortHelper.print(inputArray, inputArray.length);
     
     System.out.println("------------------------");

@@ -7,9 +7,9 @@ public class MergeSort {
     System.out.println("Executing MergeSort for the following input:");
     SortHelper.print(inputArray,inputArray.length);
     System.out.println("------------------------");
- 
-    sortInternal(inputArray,inputArray.length);
     System.out.println("This is MergeSort\n");
+    sortInternal(inputArray,inputArray.length);
+   
     SortHelper.print(inputArray, inputArray.length);
 
          
@@ -89,20 +89,9 @@ public class MergeSort {
 		            j++;
 		    }
 		    
-
 		    for(int k = 0; k < temp.length; k++){
 		        ar[left + k] = temp[k];
 		    }
 		}
-  
-  
-  
-  
-	
-  
-  
-  
-  
-  
   
 }
