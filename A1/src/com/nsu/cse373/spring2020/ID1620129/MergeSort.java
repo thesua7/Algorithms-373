@@ -53,10 +53,11 @@ public class MergeSort {
 		    int mid = (left + right) / 2;
 		    
 		    int length = right - left + 1;
+		    
+		 
+		    E[] temp = (E[]) new Comparable[length];
 
-		     E[] temp = Arrays.copyOf(ar,length); //Getting errors while I'm declaring a Generic type Array so I just copied it to not to get compile errors
-		
-		//    E[] temp = (E[]) new Object();
+		    
 
 		    int size1 = left;
 		    int size2 = mid + 1;

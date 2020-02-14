@@ -23,18 +23,18 @@ public class IterativeSelectionSort {
 	  
 	  
 
-	  int max=0;
+	  int min;
 	  
 	  for(int i=0;i<size-1;i++) {
-		  max=i;
+		  min=i;
 		  for(int j=i+1;j<size;j++) {
-			  if(inputArray[j].compareTo(inputArray[max])<0) {
-				  max = j;
+			  if(inputArray[j].compareTo(inputArray[min])<0) {
+				  min = j;
 			  }
 		  }
 		  E temp = inputArray[i];
-		  inputArray[i] = inputArray[max];
-		  inputArray[max] = temp;
+		  inputArray[i] = inputArray[min];
+		  inputArray[min] = temp;
 		  
 		  SortHelper.print(inputArray,size);
 		  

@@ -23,22 +23,22 @@ public class IterativeInsertionSort {
   private static <E extends Comparable<E>> void sortInternal(E[] inputArray
       , int size){
 	
-		int i,j=2;
+		int i,j;
 		E swap;
 	
-		for(i=0;i<j;i++) {
-			for(j=i+1;j<size;j++) {
-				
-				if(inputArray[i].compareTo(inputArray[j])>0) {
-					swap = inputArray[i];
-					inputArray[i] = inputArray[j];
-					inputArray[j] = swap;
-					
-				}
-			}
-			
-		
-			  SortHelper.print(inputArray,size);
+	    for (i=1; i<size; ++i) 
+        { 
+            E key = inputArray[i]; 
+             j = i-1; 
+
+            while (j>=0 && (inputArray[j].compareTo(key) >0)) 
+            { 
+            	inputArray[j+1] = inputArray[j]; 
+                j = j-1; 
+            } 
+            inputArray[j+1] = key; 
+
+            SortHelper.print(inputArray,size);
   
   
   }

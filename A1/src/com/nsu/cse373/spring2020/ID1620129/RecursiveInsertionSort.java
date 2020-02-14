@@ -27,6 +27,7 @@ public class RecursiveInsertionSort {
 		if(size<=1)
 			return;
 		sortInternal(inputArray, size-1);
+		
 		E swap=inputArray[size-1];
 		int i;
 		for(i=size-2; i>=0 && inputArray[i].compareTo(swap)>0;i--){
