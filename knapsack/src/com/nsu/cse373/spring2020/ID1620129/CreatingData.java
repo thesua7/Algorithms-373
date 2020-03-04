@@ -69,10 +69,10 @@ public static void writingfirstLine(int njars,float ksize) {
 public static void fileWriteForKnapsack(String filename,String Jarname,String Jarprice,String Jarsize) {
 	
     try {
-    	File xmlFile = new File("src\\com\\nsu\\cse373\\spring2020\\ID1620129\\"+filename);
+    	File FileDes = new File("src\\com\\nsu\\cse373\\spring2020\\ID1620129\\"+filename);
 
 
-        FileWriter writer = new FileWriter(xmlFile, true);
+        FileWriter writer = new FileWriter(FileDes, true);
         BufferedWriter bufferedWriter = new BufferedWriter(writer);
         
 	
