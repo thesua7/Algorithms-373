@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 class CreatingData {
+     //Run once If there's no Data.txt file
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
