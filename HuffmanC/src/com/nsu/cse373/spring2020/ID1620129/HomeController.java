@@ -6,10 +6,13 @@ import javafx.fxml.*;
 import java.io.File;
 
 import javafx.event.ActionEvent;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
+import javafx.stage.Stage;
 
 
 public class HomeController {
@@ -29,7 +32,25 @@ public class HomeController {
 	  File selectedFile = fc.showOpenDialog(null);
 	  
 	  if(selectedFile !=null) {
-		  toShow.setText(selectedFile.getName());
+		  
+		  try {
+			  Main.mainStage.hide();
+			  FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("SecondWindow.fxml"));
+			  Parent root = (Parent) fxmlLoader.load();
+			  Stage stage = new Stage();
+			  stage.setScene(new Scene(root));  
+			  stage.show();
+			  	  
+			  
+		  }
+		  
+		  catch(Exception e){
+			  
+		  }
+		  
+		  
+		  
+		 // toShow.setText(selectedFile.getName());
 	  }
 	  else {
 		  toShow.setText("Not Selected");
