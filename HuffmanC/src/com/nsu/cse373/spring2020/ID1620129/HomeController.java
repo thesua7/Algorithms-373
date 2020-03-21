@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
 
 import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
 
 
 public class HomeController {
@@ -24,6 +25,7 @@ public class HomeController {
    public void uploadbtn(ActionEvent event) {
 	  
 	  FileChooser fc = new FileChooser();
+	  fc.getExtensionFilters().add(new ExtensionFilter("Text Files", "*.txt"));
 	  File selectedFile = fc.showOpenDialog(null);
 	  
 	  if(selectedFile !=null) {
