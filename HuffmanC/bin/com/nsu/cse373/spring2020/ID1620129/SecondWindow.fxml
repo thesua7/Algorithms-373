@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1">
-	<!-- TODO Add Nodes -->
-</AnchorPane>
 
+<AnchorPane prefHeight="344.0" prefWidth="442.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="com.nsu.cse373.spring2020.ID1620129.SecondController">
+   <children>
+      <Label alignment="CENTER" layoutX="139.0" layoutY="108.0" prefHeight="64.0" prefWidth="181.0" text="SecondWindow" />
+   </children>
+</AnchorPane>

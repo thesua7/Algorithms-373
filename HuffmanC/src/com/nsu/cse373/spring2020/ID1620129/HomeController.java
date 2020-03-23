@@ -27,6 +27,7 @@ public class HomeController {
   @FXML
    public void uploadbtn(ActionEvent event) {
 	  
+	  SecondController s = new SecondController();//Declaring Second window class object
 	  FileChooser fc = new FileChooser();
 	  fc.getExtensionFilters().add(new ExtensionFilter("Text Files", "*.txt"));
 	  File selectedFile = fc.showOpenDialog(null);
@@ -40,6 +41,7 @@ public class HomeController {
 			  Stage stage = new Stage();
 			  stage.setScene(new Scene(root));  
 			  stage.show();
+			  s.SelectedFile(selectedFile);//For reading the uploaded file
 			  	  
 			  
 		  }
