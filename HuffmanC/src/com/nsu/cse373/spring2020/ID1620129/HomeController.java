@@ -20,6 +20,7 @@ public class HomeController {
 
 	private static Huffman H = new Huffman();
 	private static  int FreqArray[] = new int[1000];
+	private static char tempChar[] = new char[1000];
 	private static String text="";
 
     @FXML
@@ -50,8 +51,34 @@ public class HomeController {
 			  
 			  text = s.SelectedFile(selectedFile);//For reading the uploaded file
 			  System.out.println(text);
+			  H.charOccurances(text, tempChar, FreqArray);
 			  
-			  	  
+			  for(int o=0;o<1000;o++) {
+				if(FreqArray[o]==0) {
+		            	   break;
+		               }
+               System.out.println(FreqArray[o]);
+          
+		       }
+			  
+			  
+			  System.out.println("-----------------------------------");
+			  
+			  
+			  for(int o=0;o<1000;o++) {
+					if(tempChar[o]==0) {
+			            	   break;
+			               }
+	               System.out.println(tempChar[o]);
+	          
+			       }
+			  
+			  
+			  
+			  
+			  
+			  
+			  
 			  
 		  }
 		  
