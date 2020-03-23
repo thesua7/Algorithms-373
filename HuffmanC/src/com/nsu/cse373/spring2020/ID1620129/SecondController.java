@@ -20,16 +20,22 @@ public class SecondController extends Application{
 	}
 	
 	
-	public void  SelectedFile(File f) throws IOException { //Reads from selected file
+	public String  SelectedFile(File f) throws IOException { //Reads from selected file
 		
 		
 		   BufferedReader reader = new BufferedReader(new FileReader(f));
 
 	        String line;
+	         String s ="";
 	        while ((line = reader.readLine()) != null)
-	            System.out.println(line);
+	        	s = s + line;
+	           // System.out.println(line);
 
 
+	           
+	       //System.out.println(s);   
+	        return s;
+	        
 	}
 	}
 

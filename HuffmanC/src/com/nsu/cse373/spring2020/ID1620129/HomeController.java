@@ -18,6 +18,9 @@ import javafx.stage.Stage;
 public class HomeController {
 
 
+	private static Huffman H = new Huffman();
+	private static  int FreqArray[] = new int[1000];
+	private static String text="";
 
     @FXML
     private Label toShow;
@@ -41,7 +44,13 @@ public class HomeController {
 			  Stage stage = new Stage();
 			  stage.setScene(new Scene(root));  
 			  stage.show();
-			  s.SelectedFile(selectedFile);//For reading the uploaded file
+			  
+
+			  
+			  
+			  text = s.SelectedFile(selectedFile);//For reading the uploaded file
+			  System.out.println(text);
+			  
 			  	  
 			  
 		  }
