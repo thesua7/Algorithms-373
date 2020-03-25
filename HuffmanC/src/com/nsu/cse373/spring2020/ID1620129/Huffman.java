@@ -1,4 +1,5 @@
 package com.nsu.cse373.spring2020.ID1620129;
+import java.util.PriorityQueue;
 
 class Huffman {
 
@@ -6,10 +7,34 @@ class Huffman {
 
 
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+	public static void priorityQueue(int[] frequencies,char[] charecter) {
+		
+		private Node root;
+		
+		PriorityQueue<Node> nodes = new PriorityQueue<Node>();
+		for (int i=0;i<frequencies.length;i++) {	
+			Node newNode = new Node();
+//			newNode.character = frequencies[i];
+//			newNode.frequency = frequencies.get(ch);
+			nodes.add(newNode);
+		}
+		System.out.println("PriorityQueue: " + nodes.toString());
+		while (nodes.size() > 1) {//reduce queue to node set last node to root
+			Node smallest = nodes.remove();//remove the head of this queue
+			Node nextSmallest = nodes.remove();
+			Node newNode = new Node();
+			newNode.frequency = smallest.frequency + nextSmallest.frequency;
+			newNode.left = smallest;
+			newNode.right = nextSmallest;
+			System.out.println("    PriorityQueue" + nodes.toString());
+			nodes.add(newNode);
+			System.out.println("  PriorityQueue" + nodes.toString());
+		}
+		System.out.println("PriorityQueue = root =" + nodes.toString());
+		root = nodes.remove();
 	}
+
+
 
 	
 	
