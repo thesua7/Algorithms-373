@@ -4,12 +4,12 @@ import java.util.PriorityQueue;
 class Huffman {
 
 
-
+	private static Node root;
 
 
 	public static void priorityQueue(int[] frequencies,char[] charecter) {
 		
-		private Node root;
+	
 		
 		PriorityQueue<Node> nodes = new PriorityQueue<Node>();
 		for (int i=0;i<frequencies.length;i++) {	
