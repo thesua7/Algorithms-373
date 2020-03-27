@@ -7,7 +7,7 @@ class Huffman {
 	private static Node root;
 
 
-	public static void priorityQueue(int[] frequencies,char[] charecter) {
+	public static Node priorityQueue(int[] frequencies,char[] charecter) {
 		
 	
 		
@@ -32,6 +32,9 @@ class Huffman {
 		}
 		System.out.println("PriorityQueue = root =" + nodes.toString());
 		root = nodes.remove();
+		
+		
+		return root;
 	}
 
 

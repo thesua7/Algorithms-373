@@ -6,9 +6,16 @@ class Node implements Comparable<Node> {
 	public Node left;
 	public Node right;
 
+
 	public int compareTo(Node other) {
 		return frequency - other.frequency;
 	}
 
+	//fill tree with 0 1
+
+
+	public String toString() {
+		return character + "-" + frequency;
+	}
 
 }

@@ -22,6 +22,7 @@ public class HomeController {
 	private static  int FreqArray[] = new int[1000];
 	private static char tempChar[] = new char[1000];
 	private static String text="";
+	private static Node N;
 
     @FXML
     private Label toShow;
@@ -71,7 +72,14 @@ public class HomeController {
 			               }
 	               System.out.println(tempChar[o]);
 	          
-			       }
+			      
+			  
+			  }
+			  
+			  
+			  N = H.priorityQueue(FreqArray, tempChar);
+			  
+			  System.out.println(N.character);
 			  
 			  
 			  
