@@ -4,6 +4,7 @@ package com.nsu.cse373.spring2020.ID1620129;
 import javafx.fxml.*;
 
 import java.io.File;
+import java.util.PriorityQueue;
 
 import javafx.event.ActionEvent;
 import javafx.scene.Parent;
@@ -18,11 +19,11 @@ import javafx.stage.Stage;
 public class HomeController {
 
 
-	private static Huffman H = new Huffman();
+    private static Huffman H = new Huffman();
 	private static  int FreqArray[] = new int[1000];
 	private static char tempChar[] = new char[1000];
 	private static String text="";
-	private static Node N;
+	private PriorityQueue<Huffman> q  ;
 
     @FXML
     private Label toShow;
@@ -77,9 +78,7 @@ public class HomeController {
 			  }
 			  
 			  
-			  N = H.priorityQueue(FreqArray, tempChar);
-			  
-			  System.out.println(N.character);
+			q  = new PriorityQueue<Huffman>(FreqArray.length, new MyComparator()); // Creating a priority queue
 			  
 			  
 			  

@@ -1,47 +1,19 @@
 package com.nsu.cse373.spring2020.ID1620129;
-import java.util.PriorityQueue;
-
-class Huffman {
+import java.util.Comparator;
 
 
-	private static Node root;
+class Huffman  { //HuffmanNode
 
-
-	public static Node priorityQueue(int[] frequencies,char[] charecter) {
-		
-	
-		
-		PriorityQueue<Node> nodes = new PriorityQueue<Node>();
-		for (int i=0;i<frequencies.length;i++) {	
-			Node newNode = new Node();
-//			newNode.character = frequencies[i];
-//			newNode.frequency = frequencies.get(ch);
-			nodes.add(newNode);
-		}
-		System.out.println("PriorityQueue: " + nodes.toString());
-		while (nodes.size() > 1) {//reduce queue to node set last node to root
-			Node smallest = nodes.remove();//remove the head of this queue
-			Node nextSmallest = nodes.remove();
-			Node newNode = new Node();
-			newNode.frequency = smallest.frequency + nextSmallest.frequency;
-			newNode.left = smallest;
-			newNode.right = nextSmallest;
-			System.out.println("    PriorityQueue" + nodes.toString());
-			nodes.add(newNode);
-			System.out.println("  PriorityQueue" + nodes.toString());
-		}
-		System.out.println("PriorityQueue = root =" + nodes.toString());
-		root = nodes.remove();
-		
-		
-		return root;
-	}
-
-
-
+	   int data;
+	    char c; 
+	  
+	    Huffman left; 
+	    Huffman right; 
 	
 	
-	public static void charOccurances(String s,char a[],int ocr[]) {
+	       
+	    
+	public static void charOccurances(String s,char a[],int ocr[]) { //Freq Counting function
 		
 		String text=s;
 		int index= 0;
