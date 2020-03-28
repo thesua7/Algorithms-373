@@ -1,7 +1,8 @@
 package com.nsu.cse373.spring2020.ID1620129;
 
-class HuffmanNode {
-
+class HuffmanNode implements Comparable<HuffmanNode> {
+	//represents the total number of characters in the ASCII alphabet
+	private final static int R = 256;
 	int frequency;
 	HuffmanNode left;
 	HuffmanNode right;

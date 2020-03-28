@@ -4,7 +4,7 @@ package com.nsu.cse373.spring2020.ID1620129;
 import javafx.fxml.*;
 
 import java.io.File;
-
+import java.util.PriorityQueue;
 
 import javafx.event.ActionEvent;
 import javafx.scene.Parent;
@@ -18,8 +18,8 @@ import javafx.stage.Stage;
 
 public class HomeController {
 
-
-
+	private final static int R = 256;
+	static String[] mArray = new String[R];
 
     @FXML
     private Label toShow;
@@ -34,6 +34,8 @@ public class HomeController {
 	  fc.getExtensionFilters().add(new ExtensionFilter("Text Files", "*.txt"));
 	  File selectedFile = fc.showOpenDialog(null);
 	  String txt ="";
+	 
+
 	  
 	  if(selectedFile !=null) {
 		  
@@ -50,18 +52,16 @@ public class HomeController {
              txt = s.SelectedFile(selectedFile);
              
              System.out.println(txt);
-			  
-	
-			  
-			  
-			  
-
-			  
-			  
-			  
-			  
-			  
-			  
+             
+             HuffmanC.Genarate(txt);
+ 
+            //Printing for testing "char: Prefix"
+         	for(int i = 0; i < mArray.length; i++){
+    			if(!(mArray[i] == null)){
+    				System.out.println((char)(i) + ": " + mArray[i]);
+    			}
+    		}
+  
 			  
 			  
 		  }
@@ -82,5 +82,6 @@ public class HomeController {
 	  
   }
   
+
 	
 }

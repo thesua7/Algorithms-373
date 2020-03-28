@@ -2,8 +2,37 @@ package com.nsu.cse373.spring2020.ID1620129;
 
 import java.util.PriorityQueue;
 
+
 class HuffmanC {
 
+	private final static int R = 256;
+	
+	public static void Genarate(String line){
+		
+		char [] characters = line.toCharArray();
+		
+		
+		int [] frequency = new int[R];
+		
+		for(int i = 0 ; i < characters.length; i++){
+			frequency[characters[i]]++;
+		}
+		
+		HuffmanNode root = buildTree(frequency);
+		
+	    String[] dictionaryKeys = new String[R];
+		createKeys(dictionaryKeys, root, "");
+		
+	
+		
+		HomeController.mArray = dictionaryKeys; //Passing to global array after encoding
+
+	}
+	
+	
+	
+	
+	
 	
 	
 	public static HuffmanNode buildTree(int [] frequency){
@@ -28,6 +57,7 @@ class HuffmanC {
 	}
 	
 	public static void createKeys(String [] keys, HuffmanNode current, String key){
+	
 		if(current.isLeaf()){
 			keys[current.getSymbol()] = key;
 		}else{
@@ -37,7 +67,7 @@ class HuffmanC {
 	}
 	
 	
-
+	
 	
 	
 	
