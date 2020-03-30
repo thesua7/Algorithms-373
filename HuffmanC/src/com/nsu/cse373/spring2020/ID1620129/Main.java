@@ -18,8 +18,8 @@ public class Main extends Application {
 		try {
 			GridPane root = FXMLLoader.load(getClass().getResource("Home.fxml"));
 			
-			Scene mainScene = new Scene(root,400,400);
-			mainScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			Scene mainScene = new Scene(root,520,400);
+			mainScene.getStylesheets().add(getClass().getResource("css/application.css").toExternalForm());
 			primaryStage.setScene(mainScene);
 			primaryStage.setTitle("Huffman");
 			primaryStage.setResizable(false);

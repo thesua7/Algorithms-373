@@ -74,14 +74,16 @@ public class HomeController {
          	
          	
          	System.out.println("Decoded " + DecodedTxt);
-         	FileCodes.toStoreDecode(DecodedTxt);
+         	FileCodes.toStoreEncode(DecodedTxt);
          	
          	
   		  Main.mainStage.hide();
 		  FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("SecondWindow.fxml"));
 		  Parent root = (Parent) fxmlLoader.load();
 		  Stage stage = new Stage();
-		  stage.setScene(new Scene(root));  
+		  Scene scene2 = new Scene(root,520,400);
+		  stage.setScene(scene2);  
+		  scene2.getStylesheets().add(getClass().getResource("css/application.css").toExternalForm());
 		  stage.show();
 		  toShow.setText("");
 		  stage.setResizable(false);

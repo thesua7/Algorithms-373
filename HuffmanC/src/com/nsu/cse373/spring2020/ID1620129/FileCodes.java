@@ -33,7 +33,7 @@ class FileCodes {
 	        
 	}
 	
-	public static void toStoreDecode(String S) throws IOException{
+	public static void toStoreEncode(String S) throws IOException{
 		
 		
 		   try {
