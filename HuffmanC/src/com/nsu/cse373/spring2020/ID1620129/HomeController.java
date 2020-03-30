@@ -41,26 +41,24 @@ public class HomeController {
 	  if(selectedFile !=null) {
 		  
 		  try {
-			  Main.mainStage.hide();
-			  FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("SecondWindow.fxml"));
-			  Parent root = (Parent) fxmlLoader.load();
-			  Stage stage = new Stage();
-			  stage.setScene(new Scene(root));  
-			  stage.show();
+	
 			  
 			  
 			  
-             txt = SecondController.SelectedFile(selectedFile);
+             txt = FileCodes.SelectedFile(selectedFile);
              
              System.out.println(txt);
              
              HuffmanC.Genarate(txt);
  
             //Printing for testing "char: Prefix"
+     
          	for(int i = 0; i < mArray.length; i++){
+         
     			if(!(mArray[i] == null)){
     				System.out.println((char)(i) + ": " + mArray[i]);
     			}
+   
     		}
          	
          	
@@ -69,14 +67,22 @@ public class HomeController {
          	
          	for(int j = 0; j < mArray.length; j++){
     			if(!(mArray[j] == null)){
-    				DecodedTxt = DecodedTxt+ mArray[j];
+    				DecodedTxt = DecodedTxt+ mArray[j]+" ";
     				
     			}
     		}
          	
          	
          	System.out.println("Decoded " + DecodedTxt);
-         	SecondController.toStoreDecode(DecodedTxt);
+         	FileCodes.toStoreDecode(DecodedTxt);
+         	
+         	
+  		  Main.mainStage.hide();
+		  FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("SecondWindow.fxml"));
+		  Parent root = (Parent) fxmlLoader.load();
+		  Stage stage = new Stage();
+		  stage.setScene(new Scene(root));  
+		  stage.show();
   
 			  
 			  
