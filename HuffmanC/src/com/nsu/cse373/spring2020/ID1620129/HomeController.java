@@ -83,8 +83,9 @@ public class HomeController {
 		  Stage stage = new Stage();
 		  stage.setScene(new Scene(root));  
 		  stage.show();
-  
-			  
+		  toShow.setText("");
+		  stage.setResizable(false);
+		  
 			  
 		  }
 		  

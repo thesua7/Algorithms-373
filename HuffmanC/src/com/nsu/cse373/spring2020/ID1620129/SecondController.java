@@ -24,7 +24,10 @@ public class SecondController extends Application{
 
     @FXML
     void BackToHomebtn(ActionEvent event) {
-    	
+ 
+    	Stage CurrentStage=(Stage) SizeOfE.getScene().getWindow();
+    	CurrentStage.hide();
+    	Main.mainStage.show();
     }
     
     
@@ -43,8 +46,8 @@ public class SecondController extends Application{
 	@FXML
 	public void initialize() {
 	
-		SizeOfGtext.setText("  "+String.valueOf(FileCodes.MainFileSize));
-		SizeOfE.setText("  "+String.valueOf(FileCodes.EncodedFileSize));
+		SizeOfGtext.setText("  "+String.valueOf(FileCodes.MainFileSize)+" Bytes");
+		SizeOfE.setText("  "+String.valueOf(FileCodes.EncodedFileSize)+" Bytes");
 	}
 	
 	

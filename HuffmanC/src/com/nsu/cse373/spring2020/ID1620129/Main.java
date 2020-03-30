@@ -22,7 +22,7 @@ public class Main extends Application {
 			mainScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(mainScene);
 			primaryStage.setTitle("Huffman");
-		
+			primaryStage.setResizable(false);
 			primaryStage.show();
 			mainStage = primaryStage;
 		} catch(Exception e) {
