@@ -29,11 +29,12 @@ public class HomeController {
   @FXML
    public void uploadbtn(ActionEvent event) {
 	  
-	  SecondController s = new SecondController();//Declaring Second window class object
+
 	  FileChooser fc = new FileChooser();
 	  fc.getExtensionFilters().add(new ExtensionFilter("Text Files", "*.txt"));
 	  File selectedFile = fc.showOpenDialog(null);
 	  String txt ="";
+	  String DecodedTxt="";
 	 
 
 	  
@@ -49,7 +50,7 @@ public class HomeController {
 			  
 			  
 			  
-             txt = s.SelectedFile(selectedFile);
+             txt = SecondController.SelectedFile(selectedFile);
              
              System.out.println(txt);
              
@@ -61,6 +62,21 @@ public class HomeController {
     				System.out.println((char)(i) + ": " + mArray[i]);
     			}
     		}
+         	
+         	
+         	System.out.println("OKOK");
+         	
+         	
+         	for(int j = 0; j < mArray.length; j++){
+    			if(!(mArray[j] == null)){
+    				DecodedTxt = DecodedTxt+ mArray[j];
+    				
+    			}
+    		}
+         	
+         	
+         	System.out.println("Decoded " + DecodedTxt);
+         	SecondController.toStoreDecode(DecodedTxt);
   
 			  
 			  
