@@ -67,7 +67,7 @@ public class HomeController {
          	
          	for(int j = 0; j < mArray.length; j++){
     			if(!(mArray[j] == null)){
-    				DecodedTxt = DecodedTxt+ mArray[j]+" ";
+    				DecodedTxt = DecodedTxt+ mArray[j];
     				
     			}
     		}
@@ -75,6 +75,7 @@ public class HomeController {
          	
          	System.out.println("Decoded " + DecodedTxt);
          	FileCodes.toStoreEncode(DecodedTxt);
+         	System.out.println("After Decoded: "+HuffmanC.decode(DecodedTxt));
          	
          	
   		  Main.mainStage.hide();

@@ -6,7 +6,7 @@ import java.util.PriorityQueue;
 class HuffmanC {
 
 	private final static int R = 256;
-	
+	public static HuffmanNode root;
 	public static void Genarate(String line){
 		
 		char [] characters = line.toCharArray();
@@ -18,7 +18,7 @@ class HuffmanC {
 			frequency[characters[i]]++;
 		}
 		
-		HuffmanNode root = buildTree(frequency);
+	root = buildTree(frequency);
 		
 	    String[] dictionaryKeys = new String[R];
 		createKeys(dictionaryKeys, root, "");
@@ -66,6 +66,43 @@ class HuffmanC {
 		}
 	}
 	
+	
+	public static String decode(String input) {
+		
+		String result = "";
+		HuffmanNode n = root;
+		for (int i = 0; i < input.length(); i++) {
+			char ch = input.charAt(i);
+			if (ch == '0') { // 0:left; 1:right
+				n = n.left;
+			} else {
+				n = n.right;
+			}
+			if (n.left == null) // n is a leaf == n.right ==null;
+			{
+				result = result + n.symbol;
+				n = root;
+			
+			}
+		}
+		return result;
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+
+	}
 	
 	
 	
