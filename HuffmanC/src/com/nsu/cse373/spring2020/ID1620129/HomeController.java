@@ -62,7 +62,7 @@ public class HomeController {
     		}
          	
          	
-         	System.out.println("OKOK");
+
          	
          	
          	for(int j = 0; j < mArray.length; j++){
