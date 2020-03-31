@@ -14,6 +14,7 @@ class FileCodes {
 
 	public static double MainFileSize;
 	public static double EncodedFileSize;
+	public static String location;
 	public static String  SelectedFile(File f) throws IOException { //Reads from selected file
 		
 		
@@ -38,13 +39,13 @@ class FileCodes {
 		
 		   try {
 			    
-			      FileWriter myWriter = new FileWriter("src\\com\\nsu\\cse373\\spring2020\\ID1620129\\Decoded.txt");
+			      FileWriter myWriter = new FileWriter("src\\com\\nsu\\cse373\\spring2020\\ID1620129\\Encoded.txt");
 			      myWriter.write(S);
 			      myWriter.close();
-			      System.out.println("Successfully wrote to the file.");
+			      System.out.println("Successfully wrote to the Encoded file.");
 	
 
-			      Path filePath = Paths.get("src\\com\\nsu\\cse373\\spring2020\\ID1620129\\Decoded.txt");
+			      Path filePath = Paths.get("src\\com\\nsu\\cse373\\spring2020\\ID1620129\\Encoded.txt");
 				  FileChannel fileChannel;
 			      
 			      fileChannel = FileChannel.open(filePath);		   
@@ -68,6 +69,46 @@ class FileCodes {
 		
 		
 	}
+	
+	
+	public static void toStoreDecodedFile(String S) throws IOException{
+		
+		
+		   try {
+			    
+			       location = "src\\com\\nsu\\cse373\\spring2020\\ID1620129\\Decoded.txt";
+			      FileWriter myWriter = new FileWriter(location);
+			      myWriter.write(S);
+			      myWriter.close();
+			      System.out.println("Successfully wrote to the Decoded file.");
+			      System.out.println(location);
+	
+			    } catch (IOException e) {
+			      System.out.println("An error occurred.");
+			      e.printStackTrace();
+			    }
+	
+		
+	}
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 
 

@@ -4,6 +4,7 @@ package com.nsu.cse373.spring2020.ID1620129;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
+import java.io.IOException;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -20,7 +21,8 @@ public class SecondController extends Application{
 	 private Label SizeOfE;
 	 
 	 
-	
+	 @FXML
+	 private Label path;
 
     @FXML
     void BackToHomebtn(ActionEvent event) {
@@ -44,10 +46,22 @@ public class SecondController extends Application{
 	
 	
 	@FXML
-	public void initialize() {
+	public void initialize() throws IOException {
 	
 		SizeOfGtext.setText("  "+String.valueOf(FileCodes.MainFileSize)+" Bytes");
 		SizeOfE.setText("  "+String.valueOf(FileCodes.EncodedFileSize)+" Bytes");
+	
+		
+		FileCodes.toStoreDecodedFile(HuffmanC.decode(HomeController.EncodedTxt));
+		
+
+		path.setText(FileCodes.location);
+		
+		
+		
+		
+		
+		
 	}
 	
 	

@@ -9,24 +9,22 @@ class HuffmanC {
 
 	private final static int R = 256;
 	public static HuffmanNode root;
-	private static char [] characters;
+	public static char [] characters;
+	public static int [] frequency;
 	public static void Genarate(String line){
 		
 	 characters = line.toCharArray();
 		
 		
-		int [] frequency = new int[R];
+          frequency = new int[R];
 		
 		for(int i = 0 ; i < characters.length; i++){
 			frequency[characters[i]]++;
-			System.out.println(characters[i]);
+			
 		
 			
 		}
 		
-		
-		
-
 	root = buildTree(frequency);
 		
 	    String[] dictionaryKeys = new String[R];
@@ -46,7 +44,7 @@ class HuffmanC {
 	
 	public static HuffmanNode buildTree(int [] frequency){
 		//Create priority queue for nodes
-	    Queue<HuffmanNode> pq = new LinkedList<HuffmanNode>();
+	    Queue<HuffmanNode> pq = new PriorityQueue<HuffmanNode>();
 		
 		for(char i = 0; i < frequency.length; i++){
 			if(frequency[i] > 0){
@@ -68,16 +66,10 @@ class HuffmanC {
 	
 	public static void createKeys(String [] keys, HuffmanNode current, String key){
 	
-		String temp="";
+
 		if(current.isLeaf()){
-			//keys[current.getSymbol()] = key;
-			for(int i=0;i<current.getFrequency();i++) {
-				temp=key+temp;
-			}
-			keys[current.getSymbol()] = temp;
-	        
-			
-			
+			keys[current.getSymbol()] = key;
+
 			
 		}else{
 			createKeys(keys, current.left, key + "0");
@@ -107,21 +99,34 @@ class HuffmanC {
 		return result;
 		
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 
 	}
+	
+	  public static String unique(String s) //Removes String duplicates character
+	                                        //Used from: https://www.geeksforgeeks.org/remove-duplicates-from-a-given-string/
+	    { 
+	        String str = new String(); 
+	        int len = s.length(); 
+	          
+	        // loop to traverse the string and 
+	        // check for repeating chars using 
+	        // IndexOf() method in Java 
+	        for (int i = 0; i < len; i++)  
+	        { 
+	            // character at i'th index of s 
+	            char c = s.charAt(i); 
+	              
+	            // if c is present in str, it returns 
+	            // the index of c, else it returns -1 
+	            if (str.indexOf(c) < 0) 
+	            { 
+	                // adding c to str if -1 is returned 
+	                str += c; 
+	            } 
+	        } 
+	          
+	        return str; 
+	    } 
 	
 	
 	

@@ -20,7 +20,7 @@ public class HomeController {
 
 	private final static int R = 256;
 	static String[] mArray = new String[R];
-
+    public static String EncodedTxt="";
     @FXML
     private Label toShow;
     
@@ -34,10 +34,8 @@ public class HomeController {
 	  fc.getExtensionFilters().add(new ExtensionFilter("Text Files", "*.txt"));
 	  File selectedFile = fc.showOpenDialog(null);
 	  String txt ="";
-	  String DecodedTxt="";
-	 
-
-	  
+	  String RemovedDupTxt ="";
+	
 	  if(selectedFile !=null) {
 		  
 		  try {
@@ -56,26 +54,29 @@ public class HomeController {
          	for(int i = 0; i < mArray.length; i++){
          
     			if(!(mArray[i] == null)){
+    				
+    				
     				System.out.println((char)(i) + ": " + mArray[i]);
     			}
    
     		}
          	
+         	RemovedDupTxt = HuffmanC.unique(txt);
          	
+         	for(int m=0;m<RemovedDupTxt.length();m++) {
+         		for(int o=0;o<R;o++) {
+         			if(RemovedDupTxt.toCharArray()[m]==(char)(o)) {
+         				for(int c=0;c<HuffmanC.frequency[o];c++) {
+         					EncodedTxt=EncodedTxt+mArray[o];
+         				}
 
-         	
-         	
-         	for(int j = 0; j < mArray.length; j++){
-    			if(!(mArray[j] == null)){
-    				DecodedTxt = DecodedTxt+ mArray[j];
-    				
-    			}
-    		}
-         	
-         	
-         	System.out.println("Decoded " + DecodedTxt);
-         	FileCodes.toStoreEncode(DecodedTxt);
-         	System.out.println("After Decoded: "+HuffmanC.decode(DecodedTxt));
+         			}
+         		}
+         	}
+        
+         	System.out.println("Encoded: " + EncodedTxt);
+         	FileCodes.toStoreEncode(EncodedTxt);
+         	System.out.println("After Decoded: "+HuffmanC.decode(EncodedTxt));
          	
          	
   		  Main.mainStage.hide();
