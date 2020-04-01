@@ -27,6 +27,7 @@ class FileCodes {
 	           // System.out.println(line);
 
 	        MainFileSize = f.length();
+	        reader.close();
 	        System.out.println("Size " + MainFileSize);
 	           
 	       //System.out.println(s);   

@@ -29,7 +29,11 @@ class HuffmanNode implements Comparable	<HuffmanNode> {
 	public int getFrequency(){
 		return frequency;
 	}
-	
+
+	@Override
+	public int compareTo(HuffmanNode other){
+		return this.frequency - other.frequency;
+	}
 	
 	
 }

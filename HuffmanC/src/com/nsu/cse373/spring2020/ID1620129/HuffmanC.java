@@ -7,13 +7,19 @@ class HuffmanC {
 
 
 	public static HuffmanNode root;
+    public static Map<Character,String> MAINMAP;
 	
-	
-	public static void Genarate(String line){
+	public static String Encoding(String line){
 		
 
 		
 		  root = buildTree(getCharFreq(line));
+	
+		  Map<Character, String> charCode = Genarate(root,getCharFreq(line).keySet());
+		  String encodedString = encodeText(charCode, line);
+		  
+		  return encodedString;
+		  
 	}
 	
 	
@@ -22,8 +28,9 @@ class HuffmanC {
 	        Queue<HuffmanNode> pq = createNodeQueue(map);
 
 	        while (pq.size() > 1) {
-	            HuffmanNode left = pq.remove();
+	          
 	            HuffmanNode right = pq.remove();
+	            HuffmanNode left = pq.remove();
 	            HuffmanNode parent = new HuffmanNode('\0', left.frequency + right.frequency, left, right);
 	            pq.add(parent);
 	        }
@@ -34,7 +41,7 @@ class HuffmanC {
 	 
 	 
 	 public static Queue<HuffmanNode> createNodeQueue(Map<Character, Integer> map) {
-	        Queue<HuffmanNode> pq = new PriorityQueue<HuffmanNode>(11,new HuffmanComprator()); //initial capacity=11 and a StudentComparator instance
+	        Queue<HuffmanNode> pq = new PriorityQueue<HuffmanNode>(20,new HuffmanComprator()); //initial capacity=11 and a StudentComparator instance
 	                                                                  //https://www.geeksforgeeks.org/implement-priorityqueue-comparator-java/
 
 	        for (Map.Entry<Character, Integer> m : map.entrySet()) {
@@ -47,9 +54,9 @@ class HuffmanC {
 	    }
 	 
 	 
-	  public static Map<Character, Integer> getCharFreq(String sentence)
+	  public static Map<Character, Integer> getCharFreq(String line)
 	    {
-	        Map<Character, Integer> charFreq = charecterFrequency(sentence);
+	        Map<Character, Integer> charFreq = charecterFrequency(line);
 	        return charFreq;
 	    }
 	
@@ -79,32 +86,106 @@ class HuffmanC {
 	   
 	   
 	   
+	    public static Map<Character, String> Genarate(HuffmanNode node,Set<Character> chars) {
+	        final Map<Character, String> map = new HashMap<Character, String>();
+	        createKeys(node, map, "");
+	        MAINMAP = map;
+	        return map;
+	        
+
+	    } 
 	   
 	   
 	   
 	   
 	   
+	   public static void createKeys(HuffmanNode H, Map<Character, String> map, String s) {
+	        if (H.left == null && H.right == null)
+	        {
+	            map.put(H.symbol, s);
+	            return;
+	        }
+
+	        createKeys(H.left,map,s +'0');
+	        createKeys(H.right,map,s +'1');
+
+	    }
+	   
+	   
+	   
+	   
+	   static String encodeText(Map<Character, String> charCode, String line) {
+	        final StringBuilder stringBuilder = new StringBuilder();
+
+	        for (int i = 0; i < line.length(); i++) {
+	            stringBuilder.append(charCode.get(line.charAt(i)));
+	        }
+	        return stringBuilder.toString();
+	    }
+
 	   
 	   
 	   
 	   
 	   
+	    public static String Decoding(HuffmanNode root,String encodedMessage)
+	    {
+
+	        String decodedString = decodeText(root,encodedMessage);
+	        return decodedString;
+	    }
+	    
+	    public static String decodeText(HuffmanNode node, String EncodedLine) {
+
+	        StringBuilder stringBuilder = new StringBuilder();
+
+	        BitSet bitSet = getBitSet(EncodedLine);
+
+	        for (int i = 0; i < (bitSet.length() - 1); ) {
+	            HuffmanNode temp = node;
+	  
+	            while (temp.left != null) {
+	                if (!bitSet.get(i)) { 
+	                    temp = temp.left;
+	                } else {
+	                    temp = temp.right;
+	                }
+	                i = i + 1;
+	            }
+	            stringBuilder.append(temp.symbol);
+	        }
+	        return stringBuilder.toString();
+	    }
+	   
+	   
+	    public static BitSet getBitSet(String eLine)
+	    {
+	        BitSet bitSet = new BitSet();
+	        int i =0;
+	        for (i = 0; i < eLine.length();i++)
+	        {
+	            if (eLine.charAt(i) == '0')
+	                bitSet.set(i,false);
+	            else
+	                bitSet.set(i,true);
+	        }
+	        bitSet.set(i,true);
+	        return bitSet;
+	    }
 	   
 
-	
-//	public static void createKeys(BitSet [] keys, HuffmanNode current, BitSet key,int i){
-//	
-//
-//		if(current.isLeaf()){
-//			keys[current.getSymbol()] = key;
-//
-//			
-//		}else{
-//			createKeys(keys, current.left, key.nextSetBit(i),0);
-//			createKeys(keys, current.right, key + "1");
-//		}
-//	}
-	
+	    
+	    public static String printCharMap(Map<Character, String> map) {
+	        StringBuilder s = new StringBuilder();
+
+
+	        for (Map.Entry<Character, String> temp : map.entrySet()) {
+	           
+	            s.append(" " + temp.getKey() + " " + temp.getValue() + "\n");
+	        }
+	        return s.toString();
+	    }
+
 	
 	
 	
@@ -120,71 +201,6 @@ class HuffmanC {
 	        }
 	    }
 	
-	
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	
-	
-	public static String decode(String input) {
-		
-		String result = "";
-		HuffmanNode n = root;
-		for (int i = 0; i < input.length(); i++) {
-			char ch = input.charAt(i);
-			if (ch == '0') { // 0:left; 1:right
-				n = n.left;
-			} else {
-				n = n.right;
-			}
-			if (n.left == null) // n is a leaf == n.right ==null;
-			{
-				result = result + n.symbol;
-				n = root;
-			
-			}
-		}
-		return result;
-		
-		
-
-	}
-	
-	  public static String unique(String s) //Removes String duplicates character
-	                                        //Used from: https://www.geeksforgeeks.org/remove-duplicates-from-a-given-string/
-	    { 
-	        String str = new String(); 
-	        int len = s.length(); 
-	          
-	        // loop to traverse the string and 
-	        // check for repeating chars using 
-	        // IndexOf() method in Java 
-	        for (int i = 0; i < len; i++)  
-	        { 
-	            // character at i'th index of s 
-	            char c = s.charAt(i); 
-	              
-	            // if c is present in str, it returns 
-	            // the index of c, else it returns -1 
-	            if (str.indexOf(c) < 0) 
-	            { 
-	                // adding c to str if -1 is returned 
-	                str += c; 
-	            } 
-	        } 
-	          
-	        return str; 
-	    } 
 	
 	
 	
