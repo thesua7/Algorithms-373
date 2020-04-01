@@ -1,6 +1,6 @@
 package com.nsu.cse373.spring2020.ID1620129;
 
-class HuffmanNode implements Comparable<HuffmanNode> {
+class HuffmanNode implements Comparable	<HuffmanNode> {
 	//represents the total number of characters in the ASCII alphabet
 	private final static int R = 256;
 	int frequency;
@@ -21,11 +21,7 @@ class HuffmanNode implements Comparable<HuffmanNode> {
 		}
 		return false;
 	}
-	
-	public int compareTo(HuffmanNode other){
-		return this.frequency - other.frequency;
-	}
-	
+
 	public char getSymbol(){
 		return symbol;
 	}

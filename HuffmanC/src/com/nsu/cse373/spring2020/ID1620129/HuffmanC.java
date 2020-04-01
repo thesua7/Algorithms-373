@@ -1,81 +1,139 @@
 package com.nsu.cse373.spring2020.ID1620129;
 
-import java.util.LinkedList;
-import java.util.PriorityQueue;
-import java.util.Queue;
+import java.util.*;
 
 
 class HuffmanC {
 
-	private final static int R = 256;
+
 	public static HuffmanNode root;
-	public static char [] characters;
-	public static int [] frequency;
+	
+	
 	public static void Genarate(String line){
 		
-	 characters = line.toCharArray();
-		
-		
-          frequency = new int[R];
-		
-		for(int i = 0 ; i < characters.length; i++){
-			frequency[characters[i]]++;
-			
-		
-			
-		}
-		
-	root = buildTree(frequency);
-		
-	    String[] dictionaryKeys = new String[R];
-		createKeys(dictionaryKeys, root, "");
-		
-	
-		
-		HomeController.mArray = dictionaryKeys; //Passing to global array after encoding
 
+		
+		  root = buildTree(getCharFreq(line));
 	}
 	
 	
 	
-	
-	
-	
-	
-	public static HuffmanNode buildTree(int [] frequency){
-		//Create priority queue for nodes
-	    Queue<HuffmanNode> pq = new PriorityQueue<HuffmanNode>();
-		
-		for(char i = 0; i < frequency.length; i++){
-			if(frequency[i] > 0){
-				//create leaf nodes, and add it to the priority queue
-				pq.add(new HuffmanNode(i, frequency[i], null, null));
-			}
-		}
-		
-		while(pq.size() > 1){
-			HuffmanNode right = pq.remove();
-			HuffmanNode left = pq.remove();
-			HuffmanNode parent = new HuffmanNode('\0', left.getFrequency() + right.getFrequency(), left, right);
-			
-			pq.add(parent);
-		}
-		
-		return pq.poll();
-	}
-	
-	public static void createKeys(String [] keys, HuffmanNode current, String key){
-	
+	 public static HuffmanNode buildTree(Map<Character, Integer> map) {
+	        Queue<HuffmanNode> pq = createNodeQueue(map);
 
-		if(current.isLeaf()){
-			keys[current.getSymbol()] = key;
+	        while (pq.size() > 1) {
+	            HuffmanNode left = pq.remove();
+	            HuffmanNode right = pq.remove();
+	            HuffmanNode parent = new HuffmanNode('\0', left.frequency + right.frequency, left, right);
+	            pq.add(parent);
+	        }
 
-			
-		}else{
-			createKeys(keys, current.left, key + "0");
-			createKeys(keys, current.right, key + "1");
-		}
-	}
+	        return pq.remove();
+	    }
+	 
+	 
+	 
+	 public static Queue<HuffmanNode> createNodeQueue(Map<Character, Integer> map) {
+	        Queue<HuffmanNode> pq = new PriorityQueue<HuffmanNode>(11,new HuffmanComprator()); //initial capacity=11 and a StudentComparator instance
+	                                                                  //https://www.geeksforgeeks.org/implement-priorityqueue-comparator-java/
+
+	        for (Map.Entry<Character, Integer> m : map.entrySet()) {
+
+	            pq.add(new HuffmanNode(m.getKey(), m.getValue(), null, null));
+	        }
+
+	        return pq;
+
+	    }
+	 
+	 
+	  public static Map<Character, Integer> getCharFreq(String sentence)
+	    {
+	        Map<Character, Integer> charFreq = charecterFrequency(sentence);
+	        return charFreq;
+	    }
+	
+	  
+	  
+	  
+	   public static Map<Character, Integer> charecterFrequency(String line) {
+
+	        Map<Character, Integer> map = new HashMap<Character, Integer>();
+
+	        for (int i = 0; i < line.length(); i++) {
+	            char ch = line.charAt(i);
+	            if (!map.containsKey(ch))
+	                map.put(ch, 1);
+	            else {
+	                int val = map.get(ch);
+	                map.put(ch, ++val);
+	            }
+	        }
+
+	        return map;
+
+	    }
+	
+	
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+
+	
+//	public static void createKeys(BitSet [] keys, HuffmanNode current, BitSet key,int i){
+//	
+//
+//		if(current.isLeaf()){
+//			keys[current.getSymbol()] = key;
+//
+//			
+//		}else{
+//			createKeys(keys, current.left, key.nextSetBit(i),0);
+//			createKeys(keys, current.right, key + "1");
+//		}
+//	}
+	
+	
+	
+	
+	
+	
+	  public static class HuffmanComprator implements Comparator<HuffmanNode> {
+
+
+	        @Override
+	        public int compare(HuffmanNode left, HuffmanNode right) {
+	            return left.frequency - right.frequency;
+
+	        }
+	    }
+	
+	
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
 	
 	
 	public static String decode(String input) {

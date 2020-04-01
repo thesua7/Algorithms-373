@@ -84,6 +84,10 @@
          </children>
       </GridPane>
       <Button id="btn" alignment="CENTER" mnemonicParsing="false" onAction="#BackToHomebtn" prefHeight="25.0" prefWidth="122.0" text="Back " GridPane.columnIndex="3" GridPane.rowIndex="1" />
-      <Label fx:id="path" alignment="CENTER" prefHeight="25.0" prefWidth="197.0" textFill="#b529b1" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+      <BorderPane GridPane.columnIndex="2" GridPane.rowIndex="2">
+         <center>
+            <Label fx:id="path" alignment="CENTER" prefHeight="25.0" prefWidth="197.0" textFill="#b529b1" />
+         </center>
+      </BorderPane>
    </children>
 </GridPane>
