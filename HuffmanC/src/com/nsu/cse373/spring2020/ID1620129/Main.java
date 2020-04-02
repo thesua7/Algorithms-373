@@ -1,7 +1,7 @@
 package com.nsu.cse373.spring2020.ID1620129;
 	
 import java.io.File;
-
+import java.util.BitSet;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -73,23 +73,35 @@ public class Main extends Application {
 				  
 		
 	           txt = FileCodes.SelectedFile(selectedFile);
-	    	   System.out.println(txt);
-	           EncodedTxt=HuffmanC.Encoding(txt);
+	    	   System.out.println("Main text: "+txt);
+	           EncodedTxt=HuffmanC.Encoding(txt);//Getting the encoded string
 	           System.out.println(HuffmanC.printCharMap(HuffmanC.MAINMAP)); 
 	           System.out.println("Encoded TXT: "+ HuffmanC.Encoding(txt));
 	           System.out.println("Decoded TXT: "+HuffmanC.Decoding(HuffmanC.root,EncodedTxt));
 	           
 	   
-	           
-	          FileCodes.toStoreEncode(HuffmanC.Encoding(txt));
-	  	      SizeOfGtext.setText("  "+String.valueOf(FileCodes.MainFileSize)+" Bytes");
+	           BitSet bS = HuffmanC.StringToBitSet(EncodedTxt);
+	         
+	          FileCodes.toStoreEncode(bS.toByteArray(),EncodedTxt);//Converting to byte[] array and saving to decoded.txt as "Byte[]"
+	                                                    //For calculation the size in byte instead of character
+	  	     
+	          SizeOfGtext.setText("  "+String.valueOf(FileCodes.MainFileSize)+" Bytes");
 			  SizeOfE.setText("  "+String.valueOf(FileCodes.EncodedFileSize)+" Bytes");
 		
 			
-			  FileCodes.toStoreDecodedFile(HuffmanC.Decoding(HuffmanC.root,Main.EncodedTxt));
-			  toShow.setText("");
+			  FileCodes.toStoreDecodedFile(HuffmanC.Decoding(HuffmanC.root,Main.EncodedTxt));//Decoding the encoded string 
+			  toShow.setText("");                                                          //To generate real string and save that to file
 			  path.setText(FileCodes.location);
-				  
+
+			  
+			  System.out.println("Selected File Size: "+FileCodes.MainFileSize);
+			  System.out.println("Encoded File Size: "+FileCodes.EncodedFileSize);
+			  
+			  
+			  
+			  
+			  
+			  
 			  }
 			  
 			  catch(Exception e){

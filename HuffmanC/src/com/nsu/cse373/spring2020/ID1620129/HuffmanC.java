@@ -100,7 +100,7 @@ class HuffmanC {
 	   
 	   
 	   public static void createKeys(HuffmanNode H, Map<Character, String> map, String s) {
-	        if (H.left == null && H.right == null)
+	        if (H.left == null && H.right == null) //Creating keys based on Huffman Tree
 	        {
 	            map.put(H.symbol, s);
 	            return;
@@ -137,7 +137,7 @@ class HuffmanC {
 	    
 	    public static String decodeText(HuffmanNode node, String EncodedLine) {
 
-	        StringBuilder stringBuilder = new StringBuilder();
+	        StringBuilder stringBuilder = new StringBuilder(); //Mapping to decode
 
 	        BitSet bitSet = getBitSet(EncodedLine);
 
@@ -175,7 +175,7 @@ class HuffmanC {
 	   
 
 	    
-	    public static String printCharMap(Map<Character, String> map) {
+	    public static String printCharMap(Map<Character, String> map) { //Used For Printing the mapping
 	        StringBuilder s = new StringBuilder();
 
 
@@ -186,8 +186,23 @@ class HuffmanC {
 	        return s.toString();
 	    }
 
+	    
+	    
+	    
 	
-	
+	public static BitSet StringToBitSet(String encoded) {
+		BitSet bitSet = new BitSet(encoded.length()); //https://stackoverflow.com/questions/4350084/byte-to-file-in-java
+		                                              //Converting the encoded String to BitSet
+		int bitcounter = 0;
+		for(Character c : encoded.toCharArray()) {
+		    if(c.equals('1')) {
+		        bitSet.set(bitcounter);
+		    }
+		    bitcounter++;
+		}
+		
+		return bitSet;
+	}
 	
 	
 	
