@@ -1,0 +1,48 @@
+15 32
+Dhaka
+Delhi
+Doha
+Kolkata
+Riyadh
+Bangkok
+Chittagong
+Wuhan
+Mumbai
+Sylhet
+Cairo
+Jakarta
+Tokyo
+Seoul
+London
+Dhaka Doha
+Doha Dhaka
+Dhaka Delhi
+Delhi Dhaka
+Dhaka Kolkata
+Kolkata Dhaka
+Dhaka Chittagong
+Chittagong Dhaka
+Dhaka Sylhet
+Sylhet Dhaka
+Dhaka Bangkok
+Bangkok Dhaka
+Delhi Mumbai
+Mumbai Delhi
+Doha Riyadh
+Riyadh Doha
+Delhi Kolkata
+Kolkata Delhi
+Bangkok Seoul
+Seoul Bangkok
+Doha Cairo
+Cairo Doha
+Doha London
+London Doha
+Wuhan Bangkok
+Bangkok Wuhan
+Wuhan Seoul
+Seoul Wuhan
+Wuhan Jakarta
+Jakarta Doha
+Jakarta Cairo
+Jakarta London
